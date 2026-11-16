@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact form for Matthew Gunawan's portfolio.">
+    <title>Matthew Gunawan | Contact Form</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Matthew Gunawan</h1>
+
+        <nav aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="experience.html">Experience</a>
+            <a href="contact.html">Contact</a>
+            <a href="experiments.html">Experiments</a>
+            <a href="form-no-js.html">Form Without JS</a>
+            <a href="form-with-js.html">Form With JS</a>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section>
+            <h2>Contact Form</h2>
+
+            <p>
+                Fill out the form below to send a message.
+                All fields are required.
+            </p>
+
+            <form action="https://httpbin.org/post" method="post">
+                <fieldset>
+                    <legend>Send a Message</legend>
+
+                    <div class="form-field">
+                        <label for="name">Name (required):</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            autocomplete="name"
+                            required
+                            minlength="1"
+                            maxlength="100"
+                            aria-describedby="name-help">
+                        <small id="name-help">
+                            Enter your name (1–100 characters).
+                        </small>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="email">Email (required):</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            autocomplete="email"
+                            required
+                            aria-describedby="email-help">
+                        <small id="email-help">
+                            Enter a valid email address.
+                        </small>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="comments">Comments (required):</label>
+                        <textarea
+                            id="comments"
+                            name="comments"
+                            rows="6"
+                            required
+                            minlength="10"
+                            maxlength="1000"
+                            aria-describedby="comments-help"></textarea>
+                        <small id="comments-help">
+                            Enter a message between 10 and 1000 characters.
+                        </small>
+                    </div>
+
+                    <input
+                        type="hidden"
+                        name="possible_bot"
+                        value="true">
+
+                    <button type="submit">Send Message</button>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Matthew Gunawan</p>
+        <p>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+        </p>
+    </footer>
+</body>
+</html>

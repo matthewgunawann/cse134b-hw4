@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact form for Matthew Gunawan's portfolio.">
+    <title>Matthew Gunawan | Contact Form with JS</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/form.js" defer></script>
+    <script src="js/theme.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Matthew Gunawan</h1>
+
+        <nav aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="projects.html">Projects</a>
+            <a href="experience.html">Experience</a>
+            <a href="contact.html">Contact</a>
+            <a href="experiments.html">Experiments</a>
+            <a href="form-no-js.html">Form Without JS</a>
+            <a href="form-with-js.html" aria-current="page">Form With JS</a>
+        </nav>
+        <button id="theme-toggle" type="button" hidden>
+            Switch to Dark
+        </button>
+    </header>
+
+    <main id="main-content">
+        <section>
+            <h2>Contact Form with JavaScript</h2>
+
+            <p>
+                Fill out the form below to send a message.
+                All fields are required.
+            </p>
+
+            <form id="contact-form"
+                  action="https://httpbin.org/post"
+                  method="post">
+                <fieldset>
+                    <legend>Send a Message</legend>
+
+                    <div class="form-field">
+                        <label for="name">Name (required):</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            autocomplete="name"
+                            required
+                            minlength="1"
+                            maxlength="100"
+                            aria-describedby="name-help name-error">
+                        <small id="name-help">
+                            Enter your name (1–100 characters).
+                        </small>
+                        <span id="name-error"
+                              class="field-error"
+                              hidden></span>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="email">Email (required):</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            autocomplete="email"
+                            required
+                            aria-describedby="email-help email-error">
+                        <small id="email-help">
+                            Enter a valid email address.
+                        </small>
+                        <span id="email-error"
+                              class="field-error"
+                              hidden></span>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="comments">Comments (required):</label>
+                        <textarea
+                            id="comments"
+                            name="comments"
+                            rows="6"
+                            required
+                            minlength="10"
+                            maxlength="1000"
+                            aria-describedby="comments-help comments-error"></textarea>
+                        <small id="comments-help">
+                            Enter a message between 10 and 1000 characters.
+                        </small>
+                        <span id="comments-error"
+                              class="field-error"
+                              hidden></span>
+                    </div>
+
+                    <input type="hidden"
+                           name="possible_bot"
+                           value="true">
+
+                    <input type="hidden"
+                           id="form-errors"
+                           name="form-errors"
+                           value="[]">
+
+                    <div id="form-feedback" hidden>
+                        <div id="error-messages"
+                             aria-live="polite"
+                             aria-atomic="true"></div>
+
+                        <div id="info-messages"
+                             aria-live="polite"
+                             aria-atomic="true"></div>
+                    </div>
+
+                    <button type="submit">Send Message</button>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Matthew Gunawan</p>
+        <p>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+        </p>
+    </footer>
+</body>
+</html>

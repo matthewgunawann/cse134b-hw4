@@ -5,8 +5,23 @@
     --background-color: #f4f6f9;
     --card-color: #ffffff;
     --border-color: #dddddd;
+    --input-color: #ffffff;
+    --muted-color: #555555;
+    --button-color: #eeeeee;
     --font-family: Arial, Helvetica, sans-serif;
     --max-width: 1000px;
+}
+
+:root[data-theme="dark"] {
+    --primary-color: #93c5fd;
+    --accent-color: #93c5fd;
+    --text-color: #f1f5f9;
+    --background-color: #172334;
+    --card-color: #25364b;
+    --border-color: #64748b;
+    --input-color: #172334;
+    --muted-color: #cbd5e1;
+    --button-color: #334b68;
 }
 
 * {
@@ -19,10 +34,13 @@ body {
     color: var(--text-color);
     background-color: var(--background-color);
     line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
-    background-color: var(--primary-color);
+    background-color: #1e3a5f;
     color: white;
     padding: 2rem 1rem;
     text-align: center;
@@ -63,16 +81,31 @@ nav a {
 }
 
 nav a:hover {
-    background-color: var(--accent-color);
+    background-color: #2563eb;
 }
 
 /* Attribute selector: highlights the current page */
 nav a[aria-current="page"] {
-    background-color: var(--accent-color);
+    background-color: #2563eb;
     font-weight: bold;
 }
 
+#theme-toggle {
+    display: block;
+    margin: 0.75rem auto 0;
+    background-color: var(--button-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+#theme-toggle[hidden] {
+    display: none;
+}
+
 main {
+    flex: 1;
+    width: 100%;
     max-width: var(--max-width);
     margin: 2rem auto;
     padding: 0 1rem;
@@ -132,6 +165,10 @@ button {
     font: inherit;
     padding: 0.5em 1em;
     cursor: pointer;
+    color: var(--text-color);
+    background-color: var(--button-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
 }
 
 input,
@@ -139,6 +176,9 @@ textarea,
 select {
     font: inherit;
     max-width: 100%;
+    color: var(--text-color);
+    background-color: var(--input-color);
+    border: 1px solid var(--border-color);
 }
 
 img,
@@ -154,7 +194,7 @@ pre {
 }
 
 footer {
-    background-color: var(--primary-color);
+    background-color: #1e3a5f;
     color: white;
     padding: 1.5rem;
     text-align: center;
@@ -174,6 +214,7 @@ dialog[open] {
     border: 1px solid var(--border-color);
     border-radius: 8px;
     background-color: var(--card-color);
+    color: var(--text-color);
 }
 
 iframe {
@@ -181,6 +222,114 @@ iframe {
     width: 100%;
     max-width: 100%;
     border: 1px solid var(--border-color);
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+.form-field input,
+.form-field textarea {
+    width: 100%;
+    max-width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 0.5rem;
+}
+
+fieldset {
+    min-width: 0;
+    border: 1px solid var(--border-color);
+}
+
+.form-field :required {
+    border-left: 3px solid var(--accent-color);
+}
+
+.form-field :user-invalid {
+    border-color: #ef4444;
+    border-left-color: #ef4444;
+}
+
+.form-field :user-valid {
+    border-color: #15803d;
+    border-left-color: #15803d;
+}
+
+.form-field small {
+    color: var(--muted-color);
+    font-size: 0.85rem;
+}
+
+.form-field [aria-invalid="true"] {
+    border-color: #ef4444;
+    border-left-color: #ef4444;
+}
+
+.field-error {
+    color: #ef4444;
+    font-size: 0.9rem;
+}
+
+.field-error[hidden] {
+    display: none;
+}
+
+#form-feedback[hidden] {
+    display: none;
+}
+
+#error-messages {
+    color: #ef4444;
+    margin-bottom: 1rem;
+}
+
+#error-messages:empty {
+    display: none;
+}
+
+#error-messages p {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+#error-messages ul {
+    margin-top: 0;
+    padding-left: 1.5rem;
+}
+
+#info-messages {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+#info-messages.character-warning {
+    color: #92400e;
+    background-color: #fef3c7;
+    font-weight: bold;
+}
+
+#info-messages.character-limit {
+    color: #991b1b;
+    background-color: #fee2e2;
+    font-weight: bold;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.4s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation: none;
+    }
 }
 
 @media (max-width: 600px) {
